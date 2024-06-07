@@ -183,7 +183,7 @@ const ProximasConsultas = () => {
      <section className="sectionMain">
         <div>
           
-           <DadosProximas proximas={Proximas} titulo="Próximas" />
+           <DadosProximas proximas={Proximas} titulo="Próximas consultas agendadas" />
         </div>
       
       </section>
