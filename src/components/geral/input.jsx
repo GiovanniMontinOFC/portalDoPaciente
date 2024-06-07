@@ -1,11 +1,12 @@
 import React from "react"; 
 
-const Input = ({ title, tipo, nome, text, valor, desativado, onChange, classLabel, classInput }) => {
+const Input = ({ title, tipo, nome, text, valor, desativado, onChange, classLabel, classInput, desc }) => {
 
   return (
     <>
         <label className={classLabel}> 
             {title}
+            {desc}
             <input 
                 className={classInput}
                 type={tipo} 

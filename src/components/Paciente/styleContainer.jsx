@@ -66,5 +66,58 @@ const Options = styled.option`
     border: 2px solid #696969;
 `
 
+const Linha = styled.p`
+   margin: 5px;
+   font-size: 15px;
+   white-space: pre-line;
+`
 
-export {LargeDiv, SmallDiv, SectionContainer, ButtonGlobal, SavedMessage, Options};
+const CardConsulta = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    border: 2px solid #070c71;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 50vw;
+    height: 15vh;
+
+`
+
+
+//
+
+const LabelForm = styled.label`
+  display: flex;
+  flex-direction: ${(props) => (props.row ? "row" : "column")};
+  width: 20vw;
+  height: 15vh;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1px;
+  /* border: 2px solid blue; */
+`;
+
+const CheckboxForm = styled.input`
+  width: 30px;
+  &:hover {
+    scale: 1.1;
+  }
+`;
+
+const Span = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 0 auto;
+  font-size: 15px;
+`;
+
+
+export {LargeDiv, Linha, LabelForm, CheckboxForm, Span, CardConsulta, SmallDiv, SectionContainer, ButtonGlobal, SavedMessage, Options};

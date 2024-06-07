@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navegar from "../geral/navegacao";
+import Input from "../geral/input/";
 
 import '../geral/styleInput.css';
 import * as S from "./styleContainer";
@@ -98,19 +99,30 @@ const Historico = () => {
     <>
       <section className="sectionMain">
         <Navegar/>
-        <div>
-          <label htmlFor="month-select">Filtrar por mês:</label>
-          <select
-            id="month-select"
-            value={selectedMonth}
-            onChange={(e) => setSelectedMonth(e.target.value)}
-          >
-            <option value="">Todos os meses</option>
-            {uniqueMonths.map(month => (
-              <option key={month} value={month}>{month}</option>
-            ))}
-          </select>
-        </div>
+        <S.SmallDiv >
+          <Input 
+              title={"Beneficiário: "} 
+              tipo={"text"} 
+              nome={"nome"} 
+              valor={"Gabriela"}
+
+              desativado={true}
+              classInput={"showInput"}
+              classLabel={"showLabel"}
+            />
+          <label htmlFor="month-select" className="showLabel">Filtre:
+            <select
+              id="month-select"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            >
+              <option value="">Todos os meses</option>
+              {uniqueMonths.map(month => (
+                <option key={month} value={month}>{month}</option>
+              ))}
+            </select>
+          </label>
+        </S.SmallDiv>
         <div>
           <DadosHistorico historico={filteredConcluidas} titulo="Consultas Concluídas" />
         </div>

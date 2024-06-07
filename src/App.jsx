@@ -38,22 +38,20 @@ function App (){
           <GlobalStyle/>
 
           <BrowserRouter>
-            <Routes>
+              <Routes>
 
-              {/* Area Principal */}
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/cadastro" element={<Cadastro />} /> 
+                {/* Area Principal */}
+                <Route path="/" element={<Cadastro />} />
+                {/* <Route path="/cadastro" element={<Cadastro />} />  */}
 
-              {/* Area Paciente */}
-              <Route path="/meusDados" element={<MeusDados />} />
-              <Route path="/historico" element={<Historico/>} />
-              <Route path="/consultas" element={<Consultas />} />
+                {/* Area Paciente */}
+                <Route path="/meusDados" element={<MeusDados />} />
+                <Route path="/historico" element={<Historico/>} />
+                <Route path="/consultas" element={<Consultas />} />
 
-            </Routes>
+              </Routes>
           </BrowserRouter>
-       
-       
-        
+
         </>
     )
 }

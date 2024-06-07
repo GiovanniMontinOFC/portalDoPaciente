@@ -22,6 +22,32 @@ const SubNav = ({ clicou, telaAtual }) => {
 }
 
 const Agendar = () => {
+
+  const [especialidade, setEspecialidade] = useState("");
+  const [unidade, setUnidade] = useState("");
+  const [resultados, setResultados] = useState([]);
+
+  const handlePesquisa = () => {
+    // Simulação de busca de médicos com base na especialidade e unidade selecionadas
+    const medicosEncontrados = [
+      { nome: "Dr. João Silva", especialidade: "Ginecologia/Obstreticia", unidade: "Paulista" },
+      { nome: "Dr. Maria Santos", especialidade: "Ginecologia/Obstreticia", unidade: "Paulista" },
+      { nome: "Dr. Carlos Oliveira", especialidade: "Ginecologia/Obstreticia", unidade: "Barra da Tijuca" },
+      { nome: "Dr. Ana Souza", especialidade: "Clinico Geral", unidade: "Paulista" },
+      { nome: "Dr. Pedro Rocha", especialidade: "Clinico Geral", unidade: "Paulista" },
+      { nome: "Dra. Luiza Costa", especialidade: "Urologia", unidade: "Barra da Tijuca" },
+    ];
+
+    // Filtrar os médicos com base na especialidade e unidade selecionadas
+    const medicosFiltrados = medicosEncontrados.filter(medico => {
+      return (especialidade === "" || medico.especialidade === especialidade) &&
+             (unidade === "" || medico.unidade === unidade);
+    });
+
+    // Atualizar os resultados com os médicos encontrados
+    setResultados(medicosFiltrados);
+  }
+
   return (
     <>
       <S.SmallDiv>
@@ -33,6 +59,25 @@ const Agendar = () => {
           <option className="option" value="derma">Dermatologia</option>
           <option className="option" value="neuro">Neurologia</option>
         </select>
+        <S.LabelForm>
+        <S.Span>
+          <S.CheckboxForm
+            name="opcao"
+            type="radio"
+            value="online"
+          />{" "}
+          Online
+        </S.Span>
+        <S.Span>
+          <S.CheckboxForm
+            name="opcao"
+            type="radio"
+            value="presencial"
+          />{" "}
+          Presencial
+        </S.Span>
+      </S.LabelForm>
+
       </S.SmallDiv>
       <S.SmallDiv>
         <label htmlFor="uf" className="showLabel">
@@ -61,17 +106,79 @@ const Agendar = () => {
           </select>
         </label>
       </S.SmallDiv>
+      <S.ButtonGlobal onClick={()=>{handlePesquisa()}}>Pesquisar</S.ButtonGlobal>
+      {resultados.length > 0 && (
+        <div>
+          <h3>Resultados da Pesquisa:</h3>
+          <ul>
+            {resultados.map((medico, index) => (
+              <li key={index}>{medico.nome} - {medico.especialidade} - {medico.unidade}</li>
+            ))}
+          </ul>
+        </div>)}
     </>
   )
 }
 
-const Proximas = () => {
+const DadosProximas = ({ proximas, titulo }) => {
   return (
     <>
-      <p>Area proximas</p>
+      <S.SectionContainer>
+        <h1>{titulo}</h1>
+        {proximas.map((item) => (
+          <S.CardConsulta key={item.id} className="historico-item">
+            <S.Linha>{item.especialidade}</S.Linha>
+            <S.Linha>Profissional: 
+              <strong>{item.profissional}</strong>
+            </S.Linha>
+            <S.Linha>{item.datetime.data}</S.Linha>
+            <S.Linha> {item.datetime.hora}</S.Linha>
+            <S.Linha>{item.unidade}</S.Linha>
+          </S.CardConsulta>
+        ))}
+      </S.SectionContainer>
     </>
-  )
-}
+  );
+};
+
+const ProximasConsultas = () => {
+  const Proximas = [
+    {
+      especialidade: "Ginecologia/Obstetricia",
+      id: 1,
+      paciente: "Gabriela da Costa Nunes",
+      datetime: {
+        data: "15/05/2024",
+        hora: "16:22",
+      },
+      profissional: "Luiza de Andrade Barbosa",
+      unidade: "Estrada de Itapecerica - Capão Redondo"
+    },
+    {
+      especialidade: "Cardiologia",
+      id: 2,
+      paciente: "Gabriela da Costa Nunes",
+      datetime: {
+        data: "03/06/2024",
+        hora: "08:45",
+      },
+      profissional: "Carlos Roberto da Rocha Silva",
+      unidade: "Barra da Tijuca - Rio de Janeiro"
+    }
+  ];
+
+  return (
+    <>
+     <section className="sectionMain">
+        <div>
+          
+           <DadosProximas proximas={Proximas} titulo="Próximas" />
+        </div>
+      
+      </section>
+    </>
+  );
+};
 
 function Consultas() {
   const [telaAtual, setTelaAtual] = useState("Agenda");
@@ -86,7 +193,7 @@ function Consultas() {
       <section className="sectionMain">
         <SubNav clicou={clicou} telaAtual={telaAtual} />
         {telaAtual === "Agenda" && <Agendar />}
-        {telaAtual === "Proximas" && <Proximas />}
+        {telaAtual === "Proximas" && <ProximasConsultas />}
       </section>
     </>
   )

@@ -17,14 +17,21 @@ img {
 .preLine {
   white-space: pre-line;
   width: 50%;
+  
 }
 
 .buttonCad {    
-  height: 5vh;
-  width: 10vw;
+  height: 6vh;
+  width: 100%;
   border-radius:10px;
   background-color: #070c71;
   color: white;
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
+}
+
+.sucessMessage {
+  background-color: #D8F2D7;
+  text-align: center;
+  padding: 10px 0 10px 0;
 }
