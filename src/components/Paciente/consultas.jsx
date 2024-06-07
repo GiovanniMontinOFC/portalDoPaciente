@@ -106,10 +106,10 @@ const Agendar = () => {
           </select>
         </label>
       </S.SmallDiv>
-      <S.ButtonGlobal onClick={()=>{handlePesquisa()}}>Pesquisar</S.ButtonGlobal>
+      <S.ButtonGlobal onClick={()=>{handlePesquisa()}}>Pesquisar Datas</S.ButtonGlobal>
       {resultados.length > 0 && (
         <div>
-          <h3>Resultados da Pesquisa:</h3>
+          <h3>Datas Disponiveis para Agendar:</h3>
           <ul>
             {resultados.map((medico, index) => (
               <li key={index}>{medico.nome} - {medico.especialidade} - {medico.unidade}</li>
