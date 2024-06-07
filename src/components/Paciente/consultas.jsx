@@ -30,12 +30,9 @@ const Agendar = () => {
   const handlePesquisa = () => {
     // Simulação de busca de médicos com base na especialidade e unidade selecionadas
     const medicosEncontrados = [
-      { nome: "Dr. João Silva", especialidade: "Ginecologia/Obstreticia", unidade: "Paulista" },
+      { nome: "Dr. João Silva", especialidade: "Ginecologia/Obstreticia", unidade: "Paulista"},
       { nome: "Dr. Maria Santos", especialidade: "Ginecologia/Obstreticia", unidade: "Paulista" },
-      { nome: "Dr. Carlos Oliveira", especialidade: "Ginecologia/Obstreticia", unidade: "Barra da Tijuca" },
-      { nome: "Dr. Ana Souza", especialidade: "Clinico Geral", unidade: "Paulista" },
-      { nome: "Dr. Pedro Rocha", especialidade: "Clinico Geral", unidade: "Paulista" },
-      { nome: "Dra. Luiza Costa", especialidade: "Urologia", unidade: "Barra da Tijuca" },
+      { nome: "Dr. Carlos Oliveira", especialidade: "Ginecologia/Obstreticia", unidade: "Barra da Tijuca" }
     ];
 
     // Filtrar os médicos com base na especialidade e unidade selecionadas
@@ -110,9 +107,16 @@ const Agendar = () => {
       {resultados.length > 0 && (
         <div>
           <h3>Datas Disponiveis para Agendar:</h3>
+          <h4> 20/06/2024 </h4>
           <ul>
             {resultados.map((medico, index) => (
-              <li key={index}>{medico.nome} - {medico.especialidade} - {medico.unidade}</li>
+              <S.CardConsulta small>
+               <S.Linha key={index}>{medico.nome}</S.Linha>
+               <S.Linha key={index}><strong>{medico.especialidade}</strong></S.Linha>
+               <S.Linha key={index}>{medico.unidade}</S.Linha>
+               <button className="buttonCircle"> {">"} </button>
+
+              </S.CardConsulta>
             ))}
           </ul>
         </div>)}
