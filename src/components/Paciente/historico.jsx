@@ -8,19 +8,20 @@ import * as S from "./styleContainer";
 const DadosHistorico = ({ historico, titulo }) => {
   return (
     <>
-      <div>
+      <S.SectionContainer className="details">
         <h1>{titulo}</h1>
         {historico.map((item) => (
-          <div key={item.id} className="historico-item">
-            <p><strong>Especialidade:</strong> {item.especialidade}</p>
-            <p><strong>Paciente:</strong> {item.paciente}</p>
-            <p><strong>Data:</strong> {item.datetime.data}</p>
-            <p><strong>Hora:</strong> {item.datetime.hora}</p>
-            <p><strong>Profissional:</strong> {item.profissional}</p>
-            <p><strong>Unidade:</strong> {item.unidade}</p>
-          </div>
+          <S.CardConsulta key={item.id} className="historico-item">
+            <S.Linha className="blue">{item.especialidade}</S.Linha>
+            <S.Linha className="small">
+              Profissional: 
+              <strong>{item.profissional}</strong>
+            </S.Linha>
+            <S.Linha>{item.unidade}</S.Linha>
+            <S.Linha>{item.datetime.data} às {item.datetime.hora}</S.Linha>
+          </S.CardConsulta>
         ))}
-      </div>
+      </S.SectionContainer>
     </>
   );
 };

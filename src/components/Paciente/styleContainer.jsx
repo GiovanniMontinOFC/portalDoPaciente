@@ -67,9 +67,10 @@ const Options = styled.option`
 `
 
 const Linha = styled.p`
-   margin: 5px;
+   margin: 5px 10px;
    font-size: 15px;
    white-space: pre-line;
+   width: 18vw;
 `
 
 const CardConsulta = styled.div`
@@ -82,9 +83,8 @@ const CardConsulta = styled.div`
     border-radius: 20px;
     margin-top: 10px;
     padding: 10px;
-    width: 50vw;
+    width: 35vw;
     height: 15vh;
-
 `
 
 

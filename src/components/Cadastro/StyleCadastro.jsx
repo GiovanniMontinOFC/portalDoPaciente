@@ -78,6 +78,8 @@ export const Button = styled.button`
     @media (max-width: 500px) {
         width: 100%;
         height: auto;
+        margin-top:20px;
+        padding:10px;
     }
 `
 

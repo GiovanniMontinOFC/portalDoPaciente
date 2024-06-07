@@ -35,3 +35,17 @@ img {
   text-align: center;
   padding: 10px 0 10px 0;
 }
+
+.blue{
+  color: #070c71;
+}
+
+.small{
+  width:10vw;
+}
+
+.details {
+  flex-wrap: wrap;
+  height: 40vh;
+  border-bottom: 2px solid #d9d9d9;
+}

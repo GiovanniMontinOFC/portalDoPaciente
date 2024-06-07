@@ -123,17 +123,17 @@ const Agendar = () => {
 const DadosProximas = ({ proximas, titulo }) => {
   return (
     <>
-      <S.SectionContainer>
+      <S.SectionContainer className="details">
         <h1>{titulo}</h1>
         {proximas.map((item) => (
           <S.CardConsulta key={item.id} className="historico-item">
-            <S.Linha>{item.especialidade}</S.Linha>
-            <S.Linha>Profissional: 
+            <S.Linha className="blue">{item.especialidade}</S.Linha>
+            <S.Linha className="small">
+              Profissional: 
               <strong>{item.profissional}</strong>
             </S.Linha>
-            <S.Linha>{item.datetime.data}</S.Linha>
-            <S.Linha> {item.datetime.hora}</S.Linha>
             <S.Linha>{item.unidade}</S.Linha>
+            <S.Linha>{item.datetime.data} às {item.datetime.hora}</S.Linha>
           </S.CardConsulta>
         ))}
       </S.SectionContainer>
@@ -163,6 +163,17 @@ const ProximasConsultas = () => {
         hora: "08:45",
       },
       profissional: "Carlos Roberto da Rocha Silva",
+      unidade: "Barra da Tijuca - Rio de Janeiro"
+    },
+    {
+      especialidade: "Clinica Geral",
+      id: 2,
+      paciente: "Gabriela da Costa Nunes",
+      datetime: {
+        data: "29/06/2024",
+        hora: "10:00",
+      },
+      profissional: "Augustos de Souza",
       unidade: "Barra da Tijuca - Rio de Janeiro"
     }
   ];
