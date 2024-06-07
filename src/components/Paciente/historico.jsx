@@ -8,7 +8,7 @@ const DadosHistorico = ({ historico, titulo }) => {
   return (
     <>
       <div>
-        <h3>{titulo}</h3>
+        <h1>{titulo}</h1>
         {historico.map((item) => (
           <div key={item.id} className="historico-item">
             <p><strong>Especialidade:</strong> {item.especialidade}</p>
@@ -25,6 +25,8 @@ const DadosHistorico = ({ historico, titulo }) => {
 };
 
 const Historico = () => {
+  const [selectedMonth, setSelectedMonth] = useState(""); // Estado para armazenar o mês selecionado
+
   const Concluidas = [
     {
       especialidade: "Ginecologia/Obstetricia",
@@ -75,15 +77,47 @@ const Historico = () => {
     }
   ];
 
+  // Função para extrair os meses disponíveis a partir dos dados de consultas
+  const getUniqueMonths = (consultas) => {
+    const months = consultas.map(item => item.datetime.data.split("/")[1]);
+    return [...new Set(months)]; // Retorna apenas meses únicos
+  };
+
+  const allConsultas = [...Concluidas, ...Canceladas];
+  const uniqueMonths = getUniqueMonths(allConsultas);
+
+  // Função para filtrar consultas com base no mês selecionado
+  const filterConsultasByMonth = (consultas, month) => {
+    return consultas.filter(item => item.datetime.data.split("/")[1] === month);
+  };
+
+  const filteredConcluidas = selectedMonth ? filterConsultasByMonth(Concluidas, selectedMonth) : Concluidas;
+  const filteredCanceladas = selectedMonth ? filterConsultasByMonth(Canceladas, selectedMonth) : Canceladas;
+
   return (
     <>
-     
-      <Navegar/>
-      <p>Olá Mundo - Historico</p>
-      <h2>Histórico</h2>
-
-      <DadosHistorico historico={Concluidas} titulo="Consultas Concluídas" />
-      <DadosHistorico historico={Canceladas} titulo="Consultas Canceladas" />
+      <section className="sectionMain">
+        <Navegar/>
+        <div>
+          <label htmlFor="month-select">Filtrar por mês:</label>
+          <select
+            id="month-select"
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+          >
+            <option value="">Todos os meses</option>
+            {uniqueMonths.map(month => (
+              <option key={month} value={month}>{month}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <DadosHistorico historico={filteredConcluidas} titulo="Consultas Concluídas" />
+        </div>
+        <div>
+          <DadosHistorico historico={filteredCanceladas} titulo="Consultas Canceladas" />
+        </div>
+      </section>
     </>
   );
 };
