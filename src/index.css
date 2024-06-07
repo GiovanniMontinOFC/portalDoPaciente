@@ -1,0 +1,30 @@
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav {
+  width: 50%;
+  display: flex;
+
+}
+
+img {
+  height: 35vh;
+}
+
+.preLine {
+  white-space: pre-line;
+  width: 50%;
+}
+
+.buttonCad {    
+  height: 5vh;
+  width: 10vw;
+  border-radius:10px;
+  background-color: #070c71;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}

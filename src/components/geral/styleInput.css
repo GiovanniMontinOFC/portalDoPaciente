@@ -1,0 +1,78 @@
+.hideInput {
+    height: 6vh;
+    padding: 10px;
+    margin-top: 5px;
+
+    font-size: 14px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    border-radius: 12px;
+
+}
+
+.showInput {
+    height: 6vh;
+    padding: 10px;
+    margin-top: 5px;
+
+    font-size: 14px;
+    border: 2px solid #696969;
+    border-radius: 12px;    
+}
+
+.showLabel{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+    max-width: 25vw;
+}
+
+.showSmallLabel{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+    max-width: 4vw;
+}
+
+.titleLabel{
+    font-size: 25px;
+}
+
+.sectionMain{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div {
+    display:flex;
+    flex-direction: row;
+    width: 65vw;
+}
+
+/* Area Consultas */
+/* Sem funcionar (option nao aceita alteração) */
+select{
+    height: 55px;
+    padding: 10px;
+    margin-top: 5px;
+
+    font-size: 14px;
+    border: 2px solid #696969;
+    border-radius: 12px;  
+}
+
+.option {
+    height: 6vh;
+    padding: 5px;
+
+    font-size: 14px;
+    border: 2px solid #696969;
+}
+
+a {
+    text-decoration: none;
+}
